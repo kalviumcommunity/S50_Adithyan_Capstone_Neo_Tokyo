@@ -4,8 +4,7 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap');
 
 
 * {
@@ -25,16 +24,74 @@
 }
 .logo{
     font-family: "Jacques Francois Shadow",sans-serif;
-    /* font-family: "Jura", sans-serif; */
-    /* font-family: "orbitron",sans-serif; */
+
     font-size:80px;
     position: relative;
     display: inline-block;
 }
 
+
+.picture{
+    height: 100vh;
+    width: 800px;
+    background-image: url(./assets/The-Torii-Gates-of-Neo-Tokyo-City-AI-Artwork-6_1.jpg);
+    background-size: cover; 
+    background-position: center;
+
+}
+
+.picture1{
+  height: 100vh;
+  width: 800px;
+  background-image: url(./assets/The-Torii-Gates-of-Neo-Tokyo-City-AI-Artwork-6_1.jpg);
+  background-size: cover; 
+  background-position: center;
+  margin-left:725px;
+}
+
+.form{
+    position:absolute;
+    margin-left: 1200px;
+    bottom: 200px;
+}
+.form1{
+  position:absolute;
+  margin-left: 380px;
+  bottom: 200px;
+}
+
+.form-group{
+    margin-left: -180px;
+}
+
+.submit{
+    margin-left:-158px;
+    margin-top:20px
+}
+.hi{
+  font-size: 50px;
+  position:absolute;
+  margin-left: 1065px;
+  top: 150px;
+}
+
+.welcome{
+    font-size: 50px;
+    position:absolute;
+    margin-left: 165px;
+    top: 150px;
+  }
+.DHAA{
+  position:absolute;
+  bottom: 170px;
+  left: 235px;
+}
+
 .glitch {
-  color: #fff;
+  font-family: "Jacques Francois Shadow", sans-serif;
+  font-size: 80px;
   position: relative;
+  display: inline-block;
 }
 
 .glitch::before,
@@ -43,75 +100,87 @@
   position: absolute;
   top: 0;
   left: 0;
-  overflow: hidden;
+  z-index: 1;
 }
 
 .glitch::before {
-  left: -2px;
-  text-shadow: -2px 0 red;
-  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+  left: 2px;
+  text-shadow: -5px 0 red;
+  animation: glitch-anim 2s infinite linear alternate-reverse;
 }
 
 .glitch::after {
-  left: 2px;
-  text-shadow: 2px 0 blue;
-  animation: glitch-anim-2 2s infinite linear alternate-reverse;
+  left: -2px;
+  text-shadow: 5px 0 blue;
+  animation: glitch-anim2 2s infinite linear alternate-reverse;
 }
 
-@keyframes glitch-anim-1 {
+@keyframes glitch-anim {
   0% {
-    transform: translate(0);
+    clip: rect(54px, 9999px, 46px, 0);
   }
-  25% {
-    transform: translate(2px, -2px);
+  10%, 100% {
+    clip: rect(54px, 9999px, 46px, 0);
   }
-  50% {
-    transform: translate(-2px, 2px);
+  20% {
+    clip: rect(54px, 9999px, 15px, 0);
   }
-  75% {
-    transform: translate(2px, -1px);
+  30% {
+    clip: rect(32px, 9999px, 94px, 0);
   }
-  100% {
-    transform: translate(-1px, 1px);
+  40% {
+    clip: rect(62px, 9999px, 89px, 0);
+  }
+  50%, 90% {
+    clip: rect(56px, 9999px, 72px, 0);
+  }
+  60% {
+    clip: rect(63px, 9999px, 19px, 0);
+  }
+  70% {
+    clip: rect(50px, 9999px, 39px, 0);
+  }
+  80% {
+    clip: rect(44px, 9999px, 20px, 0);
   }
 }
 
-@keyframes glitch-anim-2 {
+@keyframes glitch-anim2 {
   0% {
-    transform: translate(0);
+    clip: rect(67px, 9999px, 46px, 0);
   }
-  25% {
-    transform: translate(-2px, 2px);
+  10%, 100% {
+    clip: rect(67px, 9999px, 46px, 0);
   }
-  50% {
-    transform: translate(2px, -2px);
+  20% {
+    clip: rect(47px, 9999px, 78px, 0);
   }
-  75% {
-    transform: translate(-1px, 1px);
+  30% {
+    clip: rect(89px, 9999px, 5px, 0);
   }
-  100% {
-    transform: translate(1px, -1px);
+  40% {
+    clip: rect(77px, 9999px, 63px, 0);
+  }
+  50%, 90% {
+    clip: rect(89px, 9999px, 24px, 0);
+  }
+  60% {
+    clip: rect(35px, 9999px, 60px, 0);
+  }
+  70% {
+    clip: rect(15px, 9999px, 74px, 0);
+  }
+  80% {
+    clip: rect(46px, 9999px, 69px, 0);
   }
 }
 
-.picture{
-    border: 1px solid black;
-    height: 100vh;
-    width: 800px;
-    background-image: url(./assets/The-Torii-Gates-of-Neo-Tokyo-City-AI-Artwork-6_1.jpg)
+.glitch-active::before,
+.glitch-active::after {
+  display: none;
 }
 
-.form{
-    position:absolute;
-    margin-left: 1200px;
-    /* margin-bottom: 400px; */
-    bottom: 200px;
-}
-
-.form-group{
-    margin-left: -200px;
-}
-
-.submit{
-    margin-left:-200px
+.error{
+  position: relative;
+  right: 120px;
 }
