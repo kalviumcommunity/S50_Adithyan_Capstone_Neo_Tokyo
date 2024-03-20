@@ -184,3 +184,38 @@
   position: relative;
   right: 120px;
 }
+
+.icon{
+  font-family: "Jacques Francois Shadow",sans-serif;
+
+}
+
+.dropdown{
+right: 1300px;
+}
+
+@layer utilities {
+  .transition-transform {
+    transition-property: transform;
+  }
+}
+
+@layer utilities {
+  .translate-x-0 {
+    transform: translateX(0);
+  }
+
+  .-translate-x-full {
+    transform: translateX(-100%);
+  }
+}
+
+.blog {
+  height: 620px;
+  width: 950px;
+  overflow-y: auto; 
+}
+
+.blog::-webkit-scrollbar {
+  width: 0;
+}
