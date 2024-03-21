@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import landing from '../assets/Landing.png';
 import menu from '../assets/menu.png';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import spidey from '../assets/spidey.jpg'
 function DropdownMenu({ isOpen, toggle }) {
   return (
     <div className={`dropdown absolute mt-12 w-52 h-3/4 bg-red-950 text-white rounded-xl shadow-lg transition-transform transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} ${isOpen ? 'visible' : 'invisible'}`}>
       <div className=' rounded-xl h-40 shadow-lg pt-10'>
         <div className=' h-10 w-10 border border-white rounded-3xl ml-20 '>
-          <img src={spidey} className='bg-cover rounded-full' alt="" />
+          <Link to='/Profile'><img src={spidey} className='bg-cover rounded-full' alt="" /></Link>
         </div>
         <p className='ml-16 mt-5'>John Doe</p>
 
@@ -39,11 +39,12 @@ function Landing() {
     navigate('/Signup');
   };
 
+
   return (
     <div>
       <div className='bg-black h-screen w-screen bg-no-repeat bg-cover ' style={{ backgroundImage: `url(${landing})` }}>
         <div className='text-white text-4xl pl-24 pt-6 h-24 bg-black bg-opacity-50 flex'>
-          <img src={menu} className='h-8 w-8 mr-6 mt-1 cursor-pointer hover:bg-gray-600 transition duration-300' alt="" onClick={toggleDropdown} />
+          <img src={menu} className='h-8 w-8 mr-6 mt-1 cursor-pointer  transition duration-300' alt="" onClick={toggleDropdown} />
           <h1 className='icon'>
             Neo Tokyo
           </h1>
@@ -51,7 +52,7 @@ function Landing() {
           <h2 className='text-2xl mt-2 ml-60 cursor-pointer' onClick={handleLoginClick}>Login</h2>
           <h2 className='text-2xl mt-2 ml-20 cursor-pointer' onClick={handleSignupClick}>Sign up</h2>
           <div className=' h-10 w-10 border border-white rounded-3xl ml-20 '>
-          <img src={spidey} className='bg-cover rounded-full' alt="" />
+          <Link to='/Profile'><img src={spidey} className='bg-cover rounded-full' alt="" /></Link>
 
           </div>
 
