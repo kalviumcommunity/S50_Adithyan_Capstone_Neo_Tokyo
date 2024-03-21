@@ -219,3 +219,26 @@ right: 1300px;
 .blog::-webkit-scrollbar {
   width: 0;
 }
+
+.profile{
+  position: relative;
+  bottom: 80px;
+  left: 120px;
+}
+
+.form2{
+position: relative;
+bottom:70px
+}
+
+.post{
+  position:absolute;
+  left: 1000px;
+  top: 310px; }
+
+  .dummy{
+    position: relative;
+    right: 120px;
+  }
+
+ 
