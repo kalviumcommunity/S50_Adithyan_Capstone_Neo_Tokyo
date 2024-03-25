@@ -6,9 +6,11 @@ import Signup from './Components/Signup';
 import Loginpg from './Components/Loginpg';
 import Landing from './Components/Landing';
 import Profile from './Components/Profile';
+import Blogs from './Components/Blogs';
 function App() {
   return (
     <Routes>
+      <Route path='/Blogs' element={<Blogs/>}/>
       <Route path='/Profile' element={<Profile/>}/>
       <Route path='/Landing' element={<Landing/>}/>
       <Route path='/' element={<Home/>}/>
