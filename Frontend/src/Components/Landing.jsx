@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import landing from '../assets/Landing.png';
 import menu from '../assets/menu.png';
 import { useNavigate,Link } from 'react-router-dom';
 import spidey from '../assets/spidey.jpg'
 function DropdownMenu({ isOpen, toggle }) {
   return (
-    <div className={`dropdown absolute mt-12 w-52 h-3/4 bg-red-950 text-white rounded-xl shadow-lg transition-transform transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} ${isOpen ? 'visible' : 'invisible'}`}>
+    <div className={`dropdown absolute mt-12 w-52 h-3/4 bg-red-950 text-white rounded-xl shadow-lg transition-transform transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} ${isOpen ? 'visible' : 'invisible'}`} style={{ transitionDuration: '0.5s' }}>
       <div className=' rounded-xl h-40 shadow-lg pt-10'>
         <div className=' h-10 w-10 border border-white rounded-3xl ml-20 '>
           <Link to='/Profile'><img src={spidey} className='bg-cover rounded-full' alt="" /></Link>
@@ -39,6 +39,14 @@ function Landing() {
     navigate('/Signup');
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsDropdownOpen(true);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
 
   return (
     <div>
@@ -57,58 +65,59 @@ function Landing() {
           </div>
 
         </div>
-        <div className='flex'>
+
+        <div  className='flex'>
           <div className="overflow-auto blog grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4 w-2/4 mx-auto items-center justify-center">
 
 
-            <div className="bg-red-950 p-5 rounded-lg">
+            <Link to='/Blogs'><div className="bg-red-950 p-5 rounded-lg">
               <div className='w-full h-60 bg-blue-800'>
                 <img className='w-full h-full' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwKMOXRlq9ts-kD6g4EmqQ7cw5WBSWR4T4aA&usqp=CAU" alt="" />
               </div>
               <h2 className='text-xl font-bold text-white'>LOREM</h2>
               <p className='text-xl line-clamp-3 text-white'>Lorem explicabo, totam obcaecati perferendis voluptatum ex aliquid enim voluptates corporis quia odio quod suscipit magni offrem. In, facilis. Nesciunt.</p>
-            </div>
+            </div></Link>
 
-            <div className="bg-red-950 p-5 rounded-lg">
+            <Link to='/Blogs'><div className="bg-red-950 p-5 rounded-lg">
               <div className='w-full h-60 bg-blue-800'>
                 <img className='w-full h-full' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwKMOXRlq9ts-kD6g4EmqQ7cw5WBSWR4T4aA&usqp=CAU" alt="" />
               </div>
               <h2 className='text-xl font-bold text-white'>LOREM</h2>
               <p className='text-xl line-clamp-3 text-white'>Lorem explicabo, totam obcaecati perferendis voluptatum ex aliquid enim voluptates corporis quia odio quod suscipit magni offrem. In, facilis. Nesciunt.</p>
-            </div>
+            </div></Link>
 
-            <div className="bg-red-950 p-5 rounded-lg">
+            <Link to='/Blogs'><div className="bg-red-950 p-5 rounded-lg">
               <div className='w-full h-60 bg-blue-800'>
                 <img className='w-full h-full' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwKMOXRlq9ts-kD6g4EmqQ7cw5WBSWR4T4aA&usqp=CAU" alt="" />
               </div>
               <h2 className='text-xl font-bold text-white'>LOREM</h2>
               <p className='text-xl line-clamp-3 text-white'>Lorem explicabo, totam obcaecati perferendis voluptatum ex aliquid enim voluptates corporis quia odio quod suscipit magni offrem. In, facilis. Nesciunt.</p>
-            </div>
+            </div></Link>
 
-            <div className="bg-red-950 p-5 rounded-lg">
+            <Link to='/Blogs'><div className="bg-red-950 p-5 rounded-lg">
               <div className='w-full h-60 bg-blue-800'>
                 <img className='w-full h-full' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwKMOXRlq9ts-kD6g4EmqQ7cw5WBSWR4T4aA&usqp=CAU" alt="" />
               </div>
               <h2 className='text-xl font-bold text-white'>LOREM</h2>
               <p className='text-xl line-clamp-3 text-white'>Lorem explicabo, totam obcaecati perferendis voluptatum ex aliquid enim voluptates corporis quia odio quod suscipit magni offrem. In, facilis. Nesciunt.</p>
-            </div>
+            </div></Link>
             
             
-            <div className="bg-red-950 p-5 rounded-lg">
+            <Link to='/Blogs'><div className="bg-red-950 p-5 rounded-lg">
               <div className='w-full h-60 bg-blue-800'>
                 <img className='w-full h-full' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwKMOXRlq9ts-kD6g4EmqQ7cw5WBSWR4T4aA&usqp=CAU" alt="" />
               </div>
               <h2 className='text-xl font-bold text-white'>LOREM</h2>
               <p className='text-xl line-clamp-3 text-white'>Lorem explicabo, totam obcaecati perferendis voluptatum ex aliquid enim voluptates corporis quia odio quod suscipit magni offrem. In, facilis. Nesciunt.</p>
-            </div>
+            </div></Link>
 
-            <div className="bg-red-950 p-5 rounded-lg">
+            <Link to='/Blogs'><div className="bg-red-950 p-5 rounded-lg">
               <div className='w-full h-60 bg-blue-800'>
                 <img className='w-full h-full' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwKMOXRlq9ts-kD6g4EmqQ7cw5WBSWR4T4aA&usqp=CAU" alt="" />
               </div>
               <h2 className='text-xl font-bold text-white'>LOREM</h2>
               <p className='text-xl line-clamp-3 text-white'>Lorem explicabo, totam obcaecati perferendis voluptatum ex aliquid enim voluptates corporis quia odio quod suscipit magni offrem. In, facilis. Nesciunt.</p>
-            </div>
+            </div></Link>
 
           </div>
           <DropdownMenu isOpen={isDropdownOpen} toggle={toggleDropdown} />
