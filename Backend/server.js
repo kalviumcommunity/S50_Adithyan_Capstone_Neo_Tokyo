@@ -1,10 +1,10 @@
 const express = require("express");
 require('dotenv').config();
-const port = process.env.port;
+const port = process.env.PORT || 3000;
 const connectDb = require("./config/connect"); 
 const app = express();
-
-const cors = require('cors');
+const userrouter = require("./Routes/userRoute")
+const cors = require('cors')
 
 app.use(cors());
 
@@ -16,6 +16,9 @@ app.get('/ping', (req,res)=>{
     res.send("Message: Pong")
 })
 
+app.use(express.json())
+
+app.use("/",userrouter)
 
 app.listen(port, () => {
   console.log(`🚀 Server running on PORT: ${port}`);  
