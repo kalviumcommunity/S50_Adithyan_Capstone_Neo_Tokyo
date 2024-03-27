@@ -4,7 +4,8 @@ const port = process.env.PORT || 3000;
 const connectDb = require("./config/connect"); 
 const app = express();
 const userrouter = require("./Routes/userRoute")
-const cors = require('cors')
+const blogrouter = require("./Routes/blogRoute")
+const cors = require('cors');
 
 app.use(cors());
 
@@ -19,6 +20,7 @@ app.get('/ping', (req,res)=>{
 app.use(express.json())
 
 app.use("/",userrouter)
+app.use("/",blogrouter)
 
 app.listen(port, () => {
   console.log(`🚀 Server running on PORT: ${port}`);  

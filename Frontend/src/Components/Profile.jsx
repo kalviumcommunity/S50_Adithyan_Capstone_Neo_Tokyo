@@ -7,41 +7,49 @@ function Profile() {
   const { register, handleSubmit } = useForm();
   const [showForm, setShowForm] = useState(false);
 
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
+
   const onSubmit = (data) => {
     console.log(data);
+    toggleForm(); 
   };
 
   return (
     <div className="postpg">
       <div
-        className="border border-black h-72 w-screen bg-no-repeat bg-cover flex justify-center items-center"
+        className="border border-black h-72 w-screen bg-no-repeat bg-cover flex justify-between items-center"
         style={{
           backgroundImage: `url(${banner})`,
           backgroundPosition: "center",
-        }}
-      >
+        }}>
+          <div className="absolute top-36 mr-40 bg-cover rounded-full h-40 w-40 border border-black profile bg-gray-500 ">
+        <button
+          className="border border-black w-20 h-8 text-center ml-10 mt-44 bg-blue-500 font-bold rounded-md"
+          onClick={toggleForm}
+        >
+          {showForm ? "Cancel" : "Edit"}
+        </button>
+      </div>
+        <div className=" flex pr-32">
         <Link to="/About">
-          <h3 className="text-white text-3xl text-right ml-[800px] pr-20">
+          <h3 className="text-white text-3xl text-right  pr-20">
             About
           </h3>
         </Link>
         <Link to="/Landing">
           <h3 className="text-white text-3xl text-right ">Home</h3>
         </Link>
+        </div>
       </div>
       <div className="bg-white post text-3xl"></div>
 
-      <div className="mr-40 bg-cover rounded-full h-40 w-40 border border-black profile bg-gray-500">
-        <button
-          className="border border-black w-20 h-8 text-center ml-10 mt-44 bg-blue-500 font-bold rounded-md"
-        >
-          {showForm ? "Cancel" : "Edit"}
-        </button>
-      </div>
+      
 
-      {/* {showForm && (
+      {showForm && (
         <form
-          className="ml-16 form2 shadow-xl p-8 rounded-lg w-72"
+          className="ml-16 form2 shadow-xl p-8 rounded-lg w-72 mt-40 absolute z-30"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="mb-4">
@@ -89,11 +97,11 @@ function Profile() {
             Submit
           </button>
         </form>
-      )} */}
+      )}
       <div className="">
         <h1 className="text-center text-3xl mb-5">My posts</h1>
-        <div className="w-[1000px] h-96  ml-[430px]">
-          <div className="absolute z-10 right-40 dummy blog grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4 mx-auto items-center justify-center">
+        <div className="">
+          <div className=" right-40 w-fit  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4 mx-auto items-center justify-center">
             <div className="bg-red-950 p-5 rounded-lg w-96">
               <div className="w-full h-60 bg-blue-800">
                 <img
