@@ -1,27 +1,37 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import spidey from '../assets/spidey.jpg';
 import bg from '../assets/glbg.jpg';
 
 function Blogs() {
-  const [fixedImage, setFixedImage] = useState(false);
+  const [showCommentSection, setShowCommentSection] = useState(false);
+  const [showAddCommentSection, setShowAddCommentSection] = useState(false);
+  const [comments, setComments] = useState([
+    { commenter: "John Doe", comment: "Spider-Man 2 is amazing!" },
+    { commenter: "Jane Smith", comment: "I can't wait to play as both Spider-Man and Miles Morales!" },
+    { commenter: "Bob Johnson", comment: "Kraven the Hunter sounds like a formidable opponent." }
+  ]);
+  const [newComment, setNewComment] = useState(""); 
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const image = document.querySelector('.fixed-image');
-      if (image) {
-        const { top } = image.getBoundingClientRect();
-        if (top <= window.innerHeight * 0.45) {
-          setFixedImage(true);
-        } else {
-          setFixedImage(false);
-        }
-      }
-    };
+  const toggleCommentSection = () => {
+    setShowCommentSection(!showCommentSection);
+  };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const toggleAddCommentSection = () => {
+    setShowAddCommentSection(!showAddCommentSection);
+  };
+
+  const handleInputChange = (e) => {
+    setNewComment(e.target.value);
+  };
+
+  const handlePostComment = () => {
+    if (newComment.trim() !== "") {
+      setComments([...comments, { commenter: "You", comment: newComment }]);
+      setNewComment(""); 
+    }
+  };
 
   return (
     <div className='h-screen w-screen overflow-scroll overflow-x-hidden' style={{backgroundImage:`url(${bg})`}}>
@@ -34,13 +44,13 @@ function Blogs() {
         <h2 className='text-2xl mt-2 ml-20 cursor-pointer'>Community</h2>
         <Link to='/Profile'><img src={spidey} className='ml-[70px] h-10 w-10 bg-cover rounded-full' alt="" /></Link>
       </div>
-      <div className='ml-[800px] text-4xl text-white font-bold mt-10'>
+      <div className='ml-[850px] text-4xl text-white font-bold mt-10'>
         Lorem ipsum dolor 
       </div>
-      <div className='flex justify-center mb-20 mt-10'>
-        <div className={`h-80 w-[500px] border border-white mt-40 leading-loose ${fixedImage ? 'fixed-image' : ''}`} style={{ backgroundImage: 'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwKMOXRlq9ts-kD6g4EmqQ7cw5WBSWR4T4aA&usqp=CAU")', backgroundSize: 'cover' }}></div>
-        <div className=' w-[950px] ml-[20px] text-white' style={{lineHeight:2.5}}>
-        <br/>
+      <div className='flex justify-between px-20 mb-20 mt-10'>
+        <div className='h-80 w-[500px]  border border-white mt-40 leading-loose'  style={{ backgroundImage: 'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwKMOXRlq9ts-kD6g4EmqQ7cw5WBSWR4T4aA&usqp=CAU")', backgroundSize: 'cover' }}></div>
+        <div className=' w-[600px] ml-[20px] text-white' style={{lineHeight:2.5}}>
+          <br/>
           The first Spider-Man game from Insomniac was proof of just how fun it could be to play as the web-slinger.
           It nailed the feeling of momentum and grace inherent in the character and fused it with a solid — if at
           times formulaic — open-world action game. Two years later, the studio kept things going with a smaller,
@@ -58,12 +68,34 @@ function Blogs() {
           a person. The game wastes no time getting to this: just as Peter introduces himself to the class, he and
           Miles are forced to deal with gigantic Sandman assaulting the city. There's actually quite a lot going on
           in the main story, with multiple threats coming from multiple villains. Sandman is just a teaser.
-          Eventually, the spider duo is confronted with Kraven the Hunter, who is basically a human version of the
-          Predator who loves to wear fur. He's desperate for a hunt that can match his abilities, and New York City,
-          with all of its costume-wearing superpowered beings, is the perfect hunting ground. Oh, and he also
-          commands an army of like-minded hunters outfitted with futuristic weaponry and gear.        </div>
+
+        </div>
       </div>
-      <button className='text-white'>Comment</button>
+      <div className='flex justify-center '>
+        <button className='bg-white font-bold h-8 w-48 rounded-md mb-6' onClick={toggleCommentSection}> Read Comment</button>
+      </div>
+      {showCommentSection && (
+        <div className=" flex flex-col items-center mb-6">
+          <h2 className="text-xl font-bold mb-2 text-white">Comments</h2>
+          <div className="border border-red-500 w-96 bg-gray-100 p-4 rounded-lg">
+            {comments.map((comment, index) => (
+              <div key={index} className=" w-72  mb-2">
+                <p className="font-bold text-blue-600">{comment.commenter}: </p>
+                <p>{comment.comment}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center mt-4">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={toggleAddCommentSection}>Add Comment</button>
+          </div>
+        </div>
+      )}
+      {showAddCommentSection && (
+        <div className="flex justify-center mt-4">
+          <textarea value={newComment} onChange={handleInputChange} rows="4" cols="50" placeholder="Write your comment here..." className="p-2 border border-gray-300 rounded-md mr-2"></textarea>
+          <button onClick={handlePostComment} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Post Comment</button>
+        </div>
+      )}
     </div>
   );
 }
