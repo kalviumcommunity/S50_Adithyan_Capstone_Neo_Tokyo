@@ -10,7 +10,7 @@ import Blogs from './Components/Blogs';
 function App() {
   return (
     <Routes>
-      <Route path='/Blogs' element={<Blogs/>}/>
+      <Route path='/Blogs/:id' element={<Blogs/>}/>
       <Route path='/Profile' element={<Profile/>}/>
       <Route path='/Landing' element={<Landing/>}/>
       <Route path='/' element={<Home/>}/>
