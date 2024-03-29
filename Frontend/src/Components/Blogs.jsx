@@ -67,7 +67,7 @@ function Blogs() {
       )}
 
       <div className='flex justify-between px-20 mb-20 mt-10'>
-        <div className='h-80 w-[500px]  border border-white mt-40 leading-loose sticky' style={{ backgroundImage: `url(${blog && blog.image_link})`, backgroundSize: 'cover' }}></div>
+        <div className='h-80 w-[500px]  border border-white mt-40 leading-loose sticky' style={{ backgroundImage: `url(${blog && blog.image_link})`, backgroundSize: 'cover',backgroundPosition: 'center' }}></div>
         <div className=' w-[600px] ml-[20px] text-white' style={{ lineHeight: 2.5 }}> 
           {blog && blog.description}
         </div>

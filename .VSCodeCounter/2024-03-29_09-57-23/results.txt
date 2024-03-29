@@ -1,0 +1,57 @@
+Date : 2024-03-29 09:57:23
+Directory : c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend
+Total : 20 files,  6280 codes, 5 comments, 111 blanks, all 6396 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JSON           |          2 |      5,404 |          0 |          2 |      5,406 |
+| JavaScript JSX |          8 |        605 |          0 |         63 |        668 |
+| CSS            |          2 |        207 |          3 |         37 |        247 |
+| JavaScript     |          4 |         41 |          2 |          4 |         47 |
+| HTML           |          1 |         16 |          0 |          1 |         17 |
+| Markdown       |          1 |          5 |          0 |          4 |          9 |
+| XML            |          2 |          2 |          0 |          0 |          2 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                       | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                          |         20 |      6,280 |          5 |        111 |      6,396 |
+| . (Files)                                                                                  |          8 |      5,466 |          2 |         11 |      5,479 |
+| public                                                                                     |          1 |          1 |          0 |          0 |          1 |
+| src                                                                                        |         11 |        813 |          3 |        100 |        916 |
+| src (Files)                                                                                |          4 |        240 |          3 |         43 |        286 |
+| src\Components                                                                             |          6 |        572 |          0 |         57 |        629 |
+| src\assets                                                                                 |          1 |          1 |          0 |          0 |          1 |
+| src\assets\assets                                                                          |          1 |          1 |          0 |          0 |          1 |
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                   | language       | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\.eslintrc.cjs               | JavaScript     |         20 |          0 |          1 |         21 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\README.md                   | Markdown       |          5 |          0 |          4 |          9 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\index.html                  | HTML           |         16 |          0 |          1 |         17 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\package-lock.json           | JSON           |      5,372 |          0 |          1 |      5,373 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\package.json                | JSON           |         32 |          0 |          1 |         33 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\postcss.config.js           | JavaScript     |          6 |          0 |          1 |          7 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\public\vite.svg             | XML            |          1 |          0 |          0 |          1 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\src\App.css                 | CSS            |        207 |          3 |         36 |        246 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\src\App.jsx                 | JavaScript JSX |         22 |          0 |          3 |         25 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\src\Components\Blogs.jsx    | JavaScript JSX |         96 |          0 |         16 |        112 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\src\Components\Home.jsx     | JavaScript JSX |         29 |          0 |          5 |         34 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\src\Components\Landing.jsx  | JavaScript JSX |        134 |          0 |         10 |        144 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\src\Components\Loginpg.jsx  | JavaScript JSX |         66 |          0 |          9 |         75 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\src\Components\Profile.jsx  | JavaScript JSX |        179 |          0 |          9 |        188 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\src\Components\Signup.jsx   | JavaScript JSX |         68 |          0 |          8 |         76 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\src\assets\assets\react.svg | XML            |          1 |          0 |          0 |          1 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\src\index.css               | CSS            |          0 |          0 |          1 |          1 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\src\main.jsx                | JavaScript JSX |         11 |          0 |          3 |         14 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\tailwind.config.js          | JavaScript     |         10 |          1 |          0 |         11 |
+| c:\Users\victu\OneDrive\Desktop\vs projects\Neo tokyo\Frontend\vite.config.js              | JavaScript     |          5 |          1 |          2 |          8 |
+| Total                                                                                      |                |      6,280 |          5 |        111 |      6,396 |
++--------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

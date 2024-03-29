@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import landing from "../assets/Landing.png";
 import menu from "../assets/menu.png";
-import closeIcon from "../assets/close.png"; 
+import closeIcon from "../assets/close.png";
 import { useNavigate, Link } from "react-router-dom";
 import spidey from "../assets/spidey.jpg";
 
@@ -12,7 +12,9 @@ function DropdownMenu({ isOpen, toggle }) {
         isOpen ? "translate-x-0" : "-translate-x-full"
       } ${isOpen ? "visible" : "invisible"}`}
       style={{ transitionDuration: "0.5s" }}
-    >      <div className=" rounded-xl h-40 shadow-lg pt-10">
+    >
+      {" "}
+      <div className=" rounded-xl h-40 shadow-lg pt-10">
         <div className=" h-10 w-10 border border-white rounded-3xl ml-20 ">
           <Link to="/Profile">
             <img src={spidey} className="bg-cover rounded-full" alt="" />
@@ -21,12 +23,17 @@ function DropdownMenu({ isOpen, toggle }) {
         <p className="ml-16 mt-5">John Doe</p>
       </div>
       <ul>
-        <li className="px-8 py-6 text-center hover:bg-red-700 cursor-pointer rounded-xl hover:text-black">
-          Home
-        </li>
+        <Link to="/Blogpost">
+          <li className="px-8 py-6 text-center hover:bg-red-700 cursor-pointer rounded-xl hover:text-black">
+            Create post
+          </li>
+        </Link>
+        <Link to='/Chat'>
+        
         <li className="px-8 py-6 text-center hover:bg-red-700 cursor-pointer rounded-xl hover:text-black">
           Chat
         </li>
+        </Link>
         <li className="px-8 py-6 text-center hover:bg-red-700 cursor-pointer rounded-xl hover:text-black">
           Community
         </li>
@@ -76,7 +83,7 @@ function Landing() {
       >
         <div className="text-white text-4xl pl-24 pt-6 h-24 bg-black bg-opacity-50 flex">
           {isDropdownOpen ? (
-            <img 
+            <img
               src={closeIcon}
               className="h-6 w-6 mr-10 mt-2 cursor-pointer  transition duration-300"
               alt=""
@@ -125,7 +132,9 @@ function Landing() {
                       alt=""
                     />
                   </div>
-                  <h2 className="text-xl font-extrabold text-white">{blog.title}</h2>
+                  <h2 className="text-xl font-extrabold text-white">
+                    {blog.title}
+                  </h2>
                   <p className="text-md line-clamp-3 text-white">
                     {blog.description}
                   </p>
