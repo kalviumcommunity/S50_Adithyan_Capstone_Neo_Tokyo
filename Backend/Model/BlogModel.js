@@ -13,9 +13,7 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    comments: [{
-        type: String
-    }]
+    comments: [String]
 });
 
 const BlogModel = mongoose.model('Blog', blogSchema);
