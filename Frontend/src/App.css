@@ -241,6 +241,7 @@ bottom:70px
     right: 120px;
   }
 
-  /* .postpg{
-    overflow-x: hidden;
-  } */
+  .screen::-webkit-scrollbar {
+    width: 0;
+  }
+  
