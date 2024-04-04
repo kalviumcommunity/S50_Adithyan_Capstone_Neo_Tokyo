@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import landing from "../assets/Landing.png";
 import menu from "../assets/menu.png";
 import closeIcon from "../assets/close.png";
-import { useNavigate, Link } from "react-router-dom";
 import spidey from "../assets/spidey.jpg";
 
 function DropdownMenu({ isOpen, toggle }) {
@@ -13,14 +14,13 @@ function DropdownMenu({ isOpen, toggle }) {
       } ${isOpen ? "visible" : "invisible"}`}
       style={{ transitionDuration: "0.5s" }}
     >
-      {" "}
       <div className=" rounded-xl h-40 shadow-lg pt-10">
         <div className=" h-10 w-10 border border-white rounded-3xl ml-20 ">
           <Link to="/Profile">
             <img src={spidey} className="bg-cover rounded-full" alt="" />
           </Link>
         </div>
-        <p className="ml-16 mt-5">John Doe</p>
+        <p className="text-center mt-5">{Cookies.get("username")}</p>
       </div>
       <ul>
         <Link to="/Blogpost">
@@ -28,11 +28,10 @@ function DropdownMenu({ isOpen, toggle }) {
             Create post
           </li>
         </Link>
-        <Link to='/Chat'>
-        
-        <li className="px-8 py-6 text-center hover:bg-red-700 cursor-pointer rounded-xl hover:text-black">
-          Chat
-        </li>
+        <Link to="/Chat">
+          <li className="px-8 py-6 text-center hover:bg-red-700 cursor-pointer rounded-xl hover:text-black">
+            Chat
+          </li>
         </Link>
         <li className="px-8 py-6 text-center hover:bg-red-700 cursor-pointer rounded-xl hover:text-black">
           Community
@@ -49,6 +48,14 @@ function Landing() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const username = Cookies.get("username");
+    setIsLoggedIn(username ? true : false); 
+  }, []);
+  
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -74,6 +81,11 @@ function Landing() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const handleLogout = () => {
+    Cookies.remove("username");
+    navigate("/Loginpg");
+  };
 
   return (
     <div>
@@ -104,21 +116,34 @@ function Landing() {
             className="h-9 w-56 text-sm rounded-lg ml-80 mt-2"
             style={{ textIndent: "30px" }}
           />
-          <h2 className="text-2xl mt-2 ml-60 cursor-pointer hover:text-white">
-            <Link to="/Loginpg" className="hover:underline hover:text-white">
-              Login
-            </Link>
-          </h2>
-          <h2 className="text-2xl mt-2 ml-20 cursor-pointer hover:text-white">
-            <Link to="/Signup" className="hover:underline hover:text-white">
-              Sign up
-            </Link>
-          </h2>
-          <div className=" h-10 w-10 border border-white rounded-3xl ml-20 ">
-            <Link to="/Profile">
-              <img src={spidey} className="bg-cover rounded-full" alt="" />
-            </Link>
-          </div>
+          {!isLoggedIn ? (
+            <>
+              <h2 className="text-2xl mt-2 ml-60 cursor-pointer hover:text-white">
+                <Link
+                  to="/Loginpg"
+                  className="hover:underline hover:text-white"
+                >
+                  Login
+                </Link>
+              </h2>
+              <h2 className="text-2xl mt-2 ml-20 cursor-pointer hover:text-white">
+                <Link to="/Signup" className="hover:underline hover:text-white">
+                  Sign up
+                </Link>
+              </h2>
+            </>
+          ) : (
+            <div className="flex">
+              <p className=" text-3xl pl-72 mt-2 cursor-pointer hover:text-white" onClick={handleLogout}>
+                Log out
+              </p>
+              <div className=" mt-2 h-10 w-10 border mb-10 border-white rounded-3xl ml-[150px] ">
+                <Link to="/Profile">
+                  <img src={spidey} className="bg-cover rounded-full" alt="" />
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
         <div className="flex">
           <div className="overflow-auto blog grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4 w-2/4 mx-auto items-center justify-center">

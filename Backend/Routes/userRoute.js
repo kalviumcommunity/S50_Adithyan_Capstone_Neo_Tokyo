@@ -2,12 +2,25 @@ const express = require("express");
 const router = express.Router();
 const userModel = require("../Model/UserModel");
 const Joi = require("joi");
+const Bcrypt = require("bcrypt");
+const saltRounds = 10;
+const jwt = require("jsonwebtoken");
+require('dotenv').config();
+
+const secretKey = process.env.Jwtkey;
 
 const userSchema = Joi.object({
     username: Joi.string().required(),
     password: Joi.string().required(),
     email: Joi.string().email().required(),
 });
+
+const generateToken = (data) => {
+    const expiresIn = "7h";
+    const plainData = data.toObject();
+    const token = jwt.sign(plainData, secretKey, { expiresIn });
+    return token;
+};
 
 router.get("/users", async (req, res) => {
     try {
@@ -28,11 +41,39 @@ router.post("/users", async (req, res) => {
             return res.status(400).json({ error: 'Validation error', details: error.details });
         }
 
-        const newUser = await userModel.create(value);
-        res.status(201).json(newUser);
+        const hash = await Bcrypt.hash(value.password, saltRounds);
+        value.password = hash;
 
+        const newUser = await userModel.create(value);
+
+        const token = generateToken(newUser);
+        
+        res.status(201).json({ newUser, token });
     } catch (error) {
         console.error('Error creating user:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+router.post("/users/login", async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        const user = await userModel.findOne({ email });
+
+        if (user) {
+            const isPasswordValid = await Bcrypt.compare(password, user.password);
+            if (isPasswordValid) {
+                const token = generateToken(user);
+                res.json({ user, token });
+            } else {
+                res.status(401).json({ error: 'Invalid email or password' });
+            }
+        } else {
+            res.status(401).json({ error: 'Invalid email or password' });
+        }
+    } catch (error) {
+        console.error('Error during login:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });

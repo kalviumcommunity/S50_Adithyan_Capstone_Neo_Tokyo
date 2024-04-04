@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import Cookies from 'js-cookie'; 
 import spidey from '../assets/spidey.jpg';
 import bg from '../assets/glbg.jpg';
 import axios from 'axios';
@@ -33,7 +34,7 @@ function Blogs() {
     if (newComment.trim() !== "") {
       try {
         const response = await axios.post(`http://localhost:3000/blog/${id}/comments`, {
-          username: "You",
+          username: Cookies.get("username"),
           comment: newComment
         });
         const newCommentData = response.data; 
@@ -85,15 +86,16 @@ function Blogs() {
         {showCommentsSlide && (
           <div className="flex flex-col items-center mb-2 border border-white bg-black">
             <h2 className="text-xl font-extrabold mt-10 pb-10 text-white">Comments</h2>
-            <div className="border border-red-500 w-[90vw] h-fit bg-gray-100 p-4 rounded-lg">
+            <div className="border border-red-500 w-[45vw]  h-fit bg-gray-100 p-4 rounded-lg">
               {comments.map((comment, index) => (
-                <div key={index} className=" w-72  mb-2">
-                  <p className="font-bold text-blue-600">{comment.username}: </p>
-                  <p>{comment.comment}</p>
+                <div key={index} className="w-40 mb-2">
+                  <img className='' src={comment.imageSrc} alt="" />
+                  <p className=" font-bold text-blue-600">{comment.username}: </p>
+                  <p className='w-96'>{comment.comment}</p>
                 </div>
               ))}
             </div>
-            <textarea value={newComment} onChange={handleInputChange} rows="4" cols="50" placeholder="   Write your comment here..." className="p-2 border border-gray-300 rounded-md mt-4 w-[90vw]"></textarea>
+            <textarea value={newComment} onChange={handleInputChange} rows="4" cols="50" placeholder="   Write your comment here..." className="p-2 border border-gray-300 rounded-md mt-4 w-[45vw]"></textarea>
             <button onClick={handlePostComment} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2  px-4 rounded mt-10 mb-20">Post Comment</button>
           </div>
         )}
