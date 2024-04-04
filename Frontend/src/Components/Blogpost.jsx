@@ -3,12 +3,12 @@ import bg from '../assets/bg.png';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-
 function Blogpost() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imageLink, setImageLink] = useState('');
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -35,6 +35,7 @@ function Blogpost() {
       setDescription('');
       setImageLink('');
       setError('');
+      setSuccessMessage('Post created successfully!');
     } catch (error) {
       console.error('Error creating post:', error);
       setError('Error creating post. Please try again.'); 
@@ -77,13 +78,12 @@ function Blogpost() {
           <button type="submit" className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
             Submit
           </button>
-          {error && <p className="text-red-500 mt-2">{error}</p>} 
+          {error && <p className="text-red-500 mt-2">{error}</p>}
+          {successMessage && <p className="text-green-500 mt-2">{successMessage}</p>}
         </form>
       </div>
     </div>
   );
-  
-  
 }
 
 export default Blogpost;

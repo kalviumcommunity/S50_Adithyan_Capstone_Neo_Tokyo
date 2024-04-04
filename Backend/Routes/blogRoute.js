@@ -3,13 +3,20 @@ const router = express.Router();
 const BlogModel = require("../Model/BlogModel");
 const Joi = require("joi");
 
-// Define Joi schema for comment validation
 const CommentSchema = Joi.object({
     username: Joi.string().required(),
     comment: Joi.string().required()
 });
 
-// GET all blogs
+const BlogSchema = Joi.object({
+    title: Joi.string().required(),
+    image_link: Joi.string().required(), 
+    description: Joi.string().required(),
+    comments: Joi.array().items(Joi.string())
+});
+
+
+
 router.get("/blog", async (req, res) => {
     try {
         const data = await BlogModel.find();
@@ -20,7 +27,6 @@ router.get("/blog", async (req, res) => {
     }
 });
 
-// GET a specific blog by ID
 router.get("/blog/:id", async (req, res) => {
     const id = req.params.id;
     try {
@@ -35,11 +41,9 @@ router.get("/blog/:id", async (req, res) => {
     }
 });
 
-// POST a new comment to a specific blog
 router.post("/blog/:id/comments", async (req, res) => {
     const id = req.params.id;
     try {
-        // Validate the incoming comment data
         const { error, value } = CommentSchema.validate(req.body);
 
         if (error) {
@@ -47,23 +51,37 @@ router.post("/blog/:id/comments", async (req, res) => {
             return res.status(400).json({ error: 'Validation error', details: error.details });
         }
 
-        // Find the blog post by ID
         const blog = await BlogModel.findById(id);
         if (!blog) {
             return res.status(404).json({ error: "Blog not found" });
         }
 
-        // Add the new comment to the blog's comments array
         blog.comments.push(value);
 
-        // Save the updated blog document
         await blog.save();
 
-        // Respond with the added comment
         res.status(201).json(value);
 
     } catch (error) {
         console.error('Error posting comment:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+router.post("/blog", async (req, res) => {
+    try {
+        const { error, value } = BlogSchema.validate(req.body);
+
+        if (error) {
+            console.error('Validation error:', error.details);
+            return res.status(400).json({ error: 'Validation error', details: error.details });
+        }
+
+        const newBlog = await BlogModel.create(value);
+        res.status(201).json(newBlog);
+
+    } catch (error) {
+        console.error('Error creating blog:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
