@@ -22,7 +22,7 @@ const generateToken = (data) => {
     return token;
 };
 
-router.get("/users", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const data = await userModel.find();
         res.json(data);
@@ -32,7 +32,7 @@ router.get("/users", async (req, res) => {
     }
 });
 
-router.post("/users", async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         const { error, value } = userSchema.validate(req.body);
 
@@ -55,7 +55,7 @@ router.post("/users", async (req, res) => {
     }
 });
 
-router.post("/users/login", async (req, res) => {
+router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
 

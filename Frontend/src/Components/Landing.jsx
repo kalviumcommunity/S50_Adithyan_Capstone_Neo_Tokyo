@@ -134,39 +134,40 @@ function Landing() {
             </>
           ) : (
             <div className="flex">
-              <p className=" text-3xl pl-72 mt-2 cursor-pointer hover:text-white" onClick={handleLogout}>
+              <p className=" text-2xl pl-72 mt-2 cursor-pointer hover:text-white" onClick={handleLogout}>
                 Log out
               </p>
               <div className=" mt-2 h-10 w-10 border mb-10 border-white rounded-3xl ml-[150px] ">
                 <Link to="/Profile">
                   <img src={spidey} className="bg-cover rounded-full" alt="" />
-                </Link>
+                </Link>blogs
               </div>
             </div>
           )}
         </div>
         <div className="flex">
-          <div className="overflow-auto blog grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4 w-2/4 mx-auto items-center justify-center">
-            {blogs.map((blog) => (
-              <Link to={`/Blogs/${blog._id}`} key={blog._id}>
-                <div className="bg-red-950 p-5 rounded-lg">
-                  <div className="w-full h-60 bg-blue-800">
-                    <img
-                      className="w-full h-full"
-                      src={blog.image_link}
-                      alt=""
-                    />
-                  </div>
-                  <h2 className="text-xl font-extrabold text-white">
-                    {blog.title}
-                  </h2>
-                  <p className="text-md line-clamp-3 text-white">
-                    {blog.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
+        <div className="overflow-auto blog grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4 w-2/4 mx-auto items-center justify-center">
+  {Array.isArray(blogs) && blogs.map((blog) => (
+    <Link to={`/Blogs/${blog._id}`} key={blog._id}>
+      <div className="bg-red-950 p-5 rounded-lg">
+        <div className="w-full h-60 bg-blue-800">
+          <img
+            className="w-full h-full"
+            src={blog.image_link}
+            alt=""
+          />
+        </div>
+        <h2 className="text-xl font-extrabold text-white">
+          {blog.title}
+        </h2>
+        <p className="text-md line-clamp-3 text-white">
+          {blog.description}
+        </p>
+      </div>
+    </Link>
+  ))}
+</div>
+
           <DropdownMenu isOpen={isDropdownOpen} toggle={toggleDropdown} />
         </div>
       </div>

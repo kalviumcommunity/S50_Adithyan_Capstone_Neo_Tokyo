@@ -17,7 +17,7 @@ const BlogSchema = Joi.object({
 
 
 
-router.get("/blog", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const data = await BlogModel.find();
         res.json(data);
@@ -27,7 +27,7 @@ router.get("/blog", async (req, res) => {
     }
 });
 
-router.get("/blog/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
     const id = req.params.id;
     try {
         const data = await BlogModel.findById(id);
@@ -41,7 +41,7 @@ router.get("/blog/:id", async (req, res) => {
     }
 });
 
-router.post("/blog/:id/comments", async (req, res) => {
+router.post("/:id/comments", async (req, res) => {
     const id = req.params.id;
     try {
         const { error, value } = CommentSchema.validate(req.body);
@@ -68,7 +68,7 @@ router.post("/blog/:id/comments", async (req, res) => {
     }
 });
 
-router.post("/blog", async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         const { error, value } = BlogSchema.validate(req.body);
 

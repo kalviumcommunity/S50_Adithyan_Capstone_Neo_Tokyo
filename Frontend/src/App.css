@@ -46,35 +46,9 @@
   background-image: url(./assets/The-Torii-Gates-of-Neo-Tokyo-City-AI-Artwork-6_1.jpg);
   background-size: cover; 
   background-position: center;
-  margin-left:725px;
 }
 
-.form{
-    position:absolute;
-    margin-left: 1200px;
-    bottom: 200px;
-}
-.form1{
-  position:absolute;
-  margin-left: 380px;
-  bottom: 200px;
-}
-
-.form-group{
-    margin-left: -180px;
-}
-
-.submit{
-    margin-left:-158px;
-    margin-top:20px
-}
-.hi{
-  font-size: 50px;
-  position:absolute;
-  margin-left: 1065px;
-  top: 150px;
-}
-
+/* 
 .welcome{
     font-size: 50px;
     position:absolute;
@@ -85,7 +59,7 @@
   position:absolute;
   bottom: 170px;
   left: 235px;
-}
+} */
 
 .glitch {
   font-family: "Jacques Francois Shadow", sans-serif;
