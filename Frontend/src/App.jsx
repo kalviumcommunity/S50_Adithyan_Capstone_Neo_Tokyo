@@ -8,9 +8,11 @@ import Landing from './Components/Landing';
 import Profile from './Components/Profile';
 import Blogs from './Components/Blogs';
 import Blogpost from './Components/Blogpost';
+import About from './Components/About';
 function App() {
   return (
     <Routes>
+      <Route path='/About' element={<About/>}/>
       <Route path='/Blogpost' element={<Blogpost/>}/>
       <Route path='/Blogs/:id' element={<Blogs/>}/>
       <Route path='/Profile' element={<Profile/>}/>
