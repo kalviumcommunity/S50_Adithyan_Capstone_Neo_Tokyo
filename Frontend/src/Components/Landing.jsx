@@ -36,9 +36,11 @@ function DropdownMenu({ isOpen, toggle }) {
         <li className="px-8 py-6 text-center hover:bg-red-700 cursor-pointer rounded-xl hover:text-black">
           Community
         </li>
+        <Link to="/About">
         <li className="px-8 py-6 text-center hover:bg-red-700 cursor-pointer rounded-xl hover:text-black">
           About
         </li>
+        </Link>
       </ul>
     </div>
   );
@@ -140,7 +142,7 @@ function Landing() {
               <div className=" mt-2 h-10 w-10 border mb-10 border-white rounded-3xl ml-[150px] ">
                 <Link to="/Profile">
                   <img src={spidey} className="bg-cover rounded-full" alt="" />
-                </Link>blogs
+                </Link>
               </div>
             </div>
           )}
