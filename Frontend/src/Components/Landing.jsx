@@ -55,7 +55,7 @@ function Landing() {
 
   useEffect(() => {
     const username = Cookies.get("username");
-    setIsLoggedIn(username ? true : false); 
+    setIsLoggedIn(!!username); // Convert username to boolean
   }, []);
   
 
@@ -74,15 +74,16 @@ function Landing() {
       }
     };
 
-    fetchBlogs();
-    console.log(blogs);
+    if (isLoggedIn) {
+      fetchBlogs();
+    }
 
     const timer = setTimeout(() => {
       setIsDropdownOpen(true);
     }, 500);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [isLoggedIn]);
 
   const handleLogout = () => {
     Cookies.remove("username");
@@ -147,31 +148,37 @@ function Landing() {
             </div>
           )}
         </div>
-        <div className="flex">
-        <div className="overflow-auto blog grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4 w-2/4 mx-auto items-center justify-center">
-  {Array.isArray(blogs) && blogs.map((blog) => (
-    <Link to={`/Blogs/${blog._id}`} key={blog._id}>
-      <div className="bg-red-950 p-5 rounded-lg">
-        <div className="w-full h-60 bg-blue-800">
-          <img
-            className="w-full h-full"
-            src={blog.image_link}
-            alt=""
-          />
-        </div>
-        <h2 className="text-xl font-extrabold text-white">
-          {blog.title}
-        </h2>
-        <p className="text-md line-clamp-3 text-white">
-          {blog.description}
-        </p>
-      </div>
-    </Link>
-  ))}
-</div>
-
-          <DropdownMenu isOpen={isDropdownOpen} toggle={toggleDropdown} />
-        </div>
+        {isLoggedIn ? (
+          <div className="overflow-auto blog grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4 w-2/4 mx-auto items-center justify-center">
+            {Array.isArray(blogs) && blogs.map((blog) => (
+              <Link to={`/Blogs/${blog._id}`} key={blog._id}>
+                <div className="bg-red-950 p-5 rounded-lg">
+                  <div className="w-full h-60 bg-blue-800">
+                    <img
+                      className="w-full h-full"
+                      src={blog.image_link}
+                      alt=""
+                    />
+                  </div>
+                  <h2 className="text-xl font-extrabold text-white">
+                    {blog.title}
+                  </h2>
+                  <p className="text-md line-clamp-3 text-white">
+                    {blog.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className="text-white text-center mt-4">
+            <p>Please sign up to see posts.</p>
+            <Link to="/Signup" className="text-blue-400 hover:underline">
+              Sign up here
+            </Link>
+          </div>
+        )}
+        <DropdownMenu isOpen={isDropdownOpen} toggle={toggleDropdown} />
       </div>
     </div>
   );
