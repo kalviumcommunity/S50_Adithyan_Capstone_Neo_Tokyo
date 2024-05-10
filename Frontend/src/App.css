@@ -48,6 +48,10 @@
   background-position: center;
 }
 
+/* .rotate-180{
+  rotate: 90deg;
+} */
+
 /* 
 .welcome{
     font-size: 50px;
@@ -237,4 +241,12 @@ bottom:70px
       transform: translateY(0);
     }
   }
+
+  .profile2{
+    margin-top:-6.5rem;
+  }
+/* 
+  .name{
+    margin-top: -35px;
+  } */
   

@@ -12,7 +12,7 @@
 
 ## Problem Statement
 
-The Collaborative Game Development Platform addresses the fragmented nature of game development collaboration...
+The Collaborative Game Devel opment Platform addresses the fragmented nature of game development collaboration...
 
 ## Solution
 

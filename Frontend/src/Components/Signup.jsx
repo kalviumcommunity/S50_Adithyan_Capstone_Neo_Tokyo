@@ -19,8 +19,10 @@ function Signup() {
         "http://localhost:3000/users",
         formData
       );
-      console.log(response.data);
-      Cookies.set("username", response.data.newUser.username);
+      const userDataString = JSON.stringify(response.data.newUser);
+      Cookies.set("userData", userDataString);
+     
+
       navigate("/Landing");
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -51,7 +53,7 @@ function Signup() {
         {errorMessage && <div className="error-message">{errorMessage}</div>}
 
         <div className="mt-10">
-          <form onSubmit={handleSubmit(onSubmit)} className="grid justify-center ">
+          <form onSubmit={handleSubmit(onSubmit)} className="grid justify-center">
             <div className="form-group pr-5 p-2">
               <label htmlFor="username"></label>
               <input
@@ -63,7 +65,7 @@ function Signup() {
               />
               <br />
               {errors.username && (
-                <span className="ml-6">{errors.username.message}</span>
+                <span className="ml-6">Username is required</span>
               )}
             </div>
 
@@ -78,7 +80,7 @@ function Signup() {
               />
               <br />
               {errors.email && (
-                <span className="ml-6">{errors.email.message}</span>
+                <span className="ml-6">Email is required</span>
               )}
             </div>
 
@@ -93,24 +95,22 @@ function Signup() {
               />
               <br />
               {errors.password && (
-                <span className="ml-6">{errors.password.message}</span>
+                <span className="ml-6">Password is required</span>
               )}
             </div>
 
-            <button
-              type="submit"
-              className="bg-red-600 mx-6 mt-4 h-10 rounded-lg text-white submit"
-            >
+            <button className="border border-black bg-red-500 hover:bg-red-600 hover:text-white hover:border-red-600 transition duration-300 ease-in-out mx-6 mt-4 h-10 rounded-lg text-white">
               Submit
             </button>
+
             <div className="flex justify-center items-center mt-10">
-  <hr className="w-1/4 border-t-2 border-gray-400" />
-  <p className="mx-4">or</p>
-  <hr className="w-1/4 border-t-2 border-gray-400" />
-</div>
+              <hr className="w-1/4 border-t-2 border-gray-400" />
+              <p className="mx-4">or</p>
+              <hr className="w-1/4 border-t-2 border-gray-400" />
+            </div>
 
             <div className="flex justify-center mt-10 w-full">
-              <button className=" bg-red-900" onClick={handleClick}>
+              <button className="bg-red-900" onClick={handleClick}>
                 <img
                   className="w-10 h-10"
                   src="https://kgo.googleusercontent.com/profile_vrt_raw_bytes_1587515358_10512.png"

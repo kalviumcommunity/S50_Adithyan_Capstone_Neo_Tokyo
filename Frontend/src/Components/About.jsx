@@ -6,7 +6,7 @@ function About() {
   return (
     <div>
       <div className='h-fit bg-cover about' style={{backgroundImage: `url(${about})`}}>
-        <nav className='text-white h-20 bg-black bg-opacity-50 items-center text-center pt-6 text-3xl'>
+        <nav className='text-white h-20 bg-black bg-opacity-50 items-center text-center pt-6 text-4xl font-bold'>
           About
         </nav>
         <div className='scroll-animation'>
