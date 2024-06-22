@@ -41,6 +41,19 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+router.get('/myblogs/:userId', async (req, res) => {
+    const userId = req.params.userId;
+  
+    try {
+      const blogs = await BlogModel.find({ user: userId });
+  
+      res.json(blogs);
+    } catch (error) {
+      console.error('Error fetching user blogs:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
 router.post("/:id/comments", async (req, res) => {
     const id = req.params.id;
     try {

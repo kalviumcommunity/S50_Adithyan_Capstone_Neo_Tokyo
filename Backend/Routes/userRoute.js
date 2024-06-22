@@ -13,6 +13,7 @@ const userSchema = Joi.object({
     username: Joi.string().required(),
     password: Joi.string().required(),
     email: Joi.string().email().required(),
+    bio: Joi.string()
 });
 
 const generateToken = (data) => {
@@ -32,6 +33,20 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.get("/:id", async (req, res) => {
+    try {
+      const user = await userModel.findById(req.params.id);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      res.json(user);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+  
+
 router.post("/", async (req, res) => {
     try {
         const { error, value } = userSchema.validate(req.body);
@@ -43,7 +58,7 @@ router.post("/", async (req, res) => {
 
         const hash = await Bcrypt.hash(value.password, saltRounds);
         value.password = hash;
-
+        value.bio = ""
         const newUser = await userModel.create(value);
 
         const token = generateToken(newUser);
@@ -58,12 +73,13 @@ router.post("/", async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
-
+        console.log(req.body)
         const user = await userModel.findOne({ email });
-
         if (user) {
+            console.log(user)
             const isPasswordValid = await Bcrypt.compare(password, user.password);
             if (isPasswordValid) {
+                console.log(user)
                 const token = generateToken(user);
                 res.json({ user, token });
             } else {
@@ -77,5 +93,25 @@ router.post("/login", async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+router.patch("/editbio/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { editedBio } = req.body;
+
+        const updatedPost = await userModel.findByIdAndUpdate(id, { bio : editedBio }, { new: true });
+
+        if (!updatedPost) {
+            return res.status(404).json({ error: 'Post not found' });
+        }
+
+        res.json(updatedPost);
+    } catch (error) {
+        console.error('Error updating post:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
 
 module.exports = router;
