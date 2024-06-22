@@ -60,6 +60,7 @@ router.post("/", async (req, res) => {
         value.password = hash;
         value.bio = ""
         const newUser = await userModel.create(value);
+        // write
 
         const token = generateToken(newUser);
         
@@ -75,6 +76,8 @@ router.post("/login", async (req, res) => {
         const { email, password } = req.body;
         console.log(req.body)
         const user = await userModel.findOne({ email });
+        // read
+
         if (user) {
             console.log(user)
             const isPasswordValid = await Bcrypt.compare(password, user.password);
@@ -110,7 +113,8 @@ router.patch("/editbio/:id", async (req, res) => {
         console.error('Error updating post:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
-});
+}); //read and write
+
 
 
 

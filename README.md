@@ -52,3 +52,6 @@ Utilizing technologies such as React.js, Node.js with Express.js, MongoDB for th
 - Day 4: Using Github to launch the Capstone project, Setting up Dev Environment
 - Day 5: Make an API, Get request
 - Day 6-10: Deploying Backend, Testing API with API client and setting up your database...
+
+
+## Deployed frontend link: https://calm-hamster-663b64.netlify.app/
