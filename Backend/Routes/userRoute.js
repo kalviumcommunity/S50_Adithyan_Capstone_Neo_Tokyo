@@ -73,12 +73,13 @@ router.post("/", async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
-
+        console.log(req.body)
         const user = await userModel.findOne({ email });
-
         if (user) {
+            console.log(user)
             const isPasswordValid = await Bcrypt.compare(password, user.password);
             if (isPasswordValid) {
+                console.log(user)
                 const token = generateToken(user);
                 res.json({ user, token });
             } else {
